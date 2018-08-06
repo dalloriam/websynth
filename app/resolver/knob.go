@@ -1,8 +1,12 @@
 package resolver
 
-import "github.com/dalloriam/synthia/core"
+import (
+	"github.com/dalloriam/synthia/core"
+	"github.com/dalloriam/websynth/app/audio"
+)
 
 type KnobResolver struct {
+	sys  *audio.System
 	knob *core.Knob
 }
 

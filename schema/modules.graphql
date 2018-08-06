@@ -1,0 +1,11 @@
+type ModulesQuery {
+    List: [Module!]!
+}
+
+type ModulesMutation {
+    Create: CreateModule!
+}
+
+type CreateModule {
+    Oscillator(): Boolean!
+}

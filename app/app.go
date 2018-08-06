@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/dalloriam/graphkit"
+	"github.com/dalloriam/websynth/app/audio"
 	"github.com/dalloriam/websynth/app/resolver"
 	"github.com/graph-gophers/graphql-go"
 	"github.com/graph-gophers/graphql-go/relay"
@@ -29,12 +30,12 @@ func (a *App) Run() error {
 		return err
 	}
 
-	synth, err := getSynth()
+	audioSys, err := audio.NewSystem()
 	if err != nil {
 		return err
 	}
 
-	schemaRes, err := graphql.ParseSchema(schema.Raw, resolver.New(synth))
+	schemaRes, err := graphql.ParseSchema(schema.Raw, resolver.New(audioSys))
 	if err != nil {
 		return err
 	}

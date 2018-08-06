@@ -1,28 +1,20 @@
 package resolver
 
 import (
-	"fmt"
+	"github.com/dalloriam/websynth/app/audio"
 
 	"github.com/dalloriam/synthia/core"
 )
 
 type ChannelResolver struct {
+	sys     *audio.System
 	channel *core.MixerChannel
 }
 
 func (r *ChannelResolver) Volume() *KnobResolver {
-	return &KnobResolver{r.channel.Volume}
+	return &KnobResolver{r.sys, r.channel.Volume}
 }
 
 func (r *ChannelResolver) Pan() *KnobResolver {
-	return &KnobResolver{r.channel.Pan}
-}
-
-func (r *ChannelResolver) Input() *string {
-	if r.channel.Input == nil {
-		return nil
-	}
-
-	outStr := fmt.Sprintf("%T", r.channel.Input)
-	return &outStr
+	return &KnobResolver{r.sys, r.channel.Pan}
 }

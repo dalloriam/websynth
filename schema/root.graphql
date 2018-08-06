@@ -5,8 +5,11 @@ schema {
 
 type Query {
     Mixer: Mixer!
+
+    Modules: ModulesQuery!
 }
 
 type Mutation {
     Mixer: MixerMutation!
+    Modules: ModulesMutation!
 }

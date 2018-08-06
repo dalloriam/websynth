@@ -1,17 +1,19 @@
 package resolver
 
-import (
-	"github.com/dalloriam/synthia"
-)
+import "github.com/dalloriam/websynth/app/audio"
 
 type RootResolver struct {
-	synth *synthia.Synthia
+	sys *audio.System
 }
 
-func New(synth *synthia.Synthia) *RootResolver {
-	return &RootResolver{synth}
+func New(system *audio.System) *RootResolver {
+	return &RootResolver{system}
 }
 
 func (r *RootResolver) Mixer() *MixerResolver {
-	return &MixerResolver{r.synth.Mixer}
+	return &MixerResolver{r.sys, r.sys.Synth.Mixer}
+}
+
+func (r *RootResolver) Modules() *ModuleCollectionResolver {
+	return &ModuleCollectionResolver{r.sys}
 }
