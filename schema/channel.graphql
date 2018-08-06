@@ -1,0 +1,11 @@
+type MixerChannel {
+    Volume: Float!
+    Pan: Float!
+
+    Input: String
+}
+
+type MixerChannelMutation {
+    SetPan(Pan: Float!): MixerChannel!
+    SetVolume(Volume: Float!): MixerChannel!
+}

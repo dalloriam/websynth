@@ -1,0 +1,8 @@
+type Mixer {
+    Channel(Idx: Int!): MixerChannel!
+    Channels: [MixerChannel!]!
+}
+
+type MixerMutation {
+    Channel(Idx: Int!): MixerChannelMutation!
+}
