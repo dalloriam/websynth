@@ -18,3 +18,7 @@ func (r *ChannelResolver) Volume() *KnobResolver {
 func (r *ChannelResolver) Pan() *KnobResolver {
 	return &KnobResolver{r.sys, r.channel.Pan}
 }
+
+func (r *ChannelResolver) Input() *SignalResolver {
+	return &SignalResolver{r.sys, &r.channel.Input}
+}

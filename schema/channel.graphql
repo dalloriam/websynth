@@ -6,4 +6,6 @@ type MixerChannel {
 type MixerChannelMutation {
     Pan: KnobMutation!
     Volume: KnobMutation!
+
+    Input: SignalMutation!
 }

@@ -1,0 +1,5 @@
+type SignalMutation {
+    Attach(ModuleIdx: Int!, ModuleField: String): Boolean!
+
+    Detach(): Boolean!
+}

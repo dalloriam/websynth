@@ -14,7 +14,7 @@ type MixerResolver struct {
 }
 
 func (m *MixerResolver) Channel(args struct{ Idx int32 }) (*ChannelResolver, error) {
-	i := int(args.Idx - 1)
+	i := int(args.Idx)
 
 	if i >= len(m.mixer.Channels) {
 		return nil, fmt.Errorf("cannot return channel %d, mixer has only %d channels", args.Idx, len(m.mixer.Channels))
