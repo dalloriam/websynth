@@ -21,16 +21,16 @@ The synthesizer is controllable via a GraphQL API running on `http://localhost:8
 
 ```graphql
 query {
-	Mixer {
-		Channels {
-			Pan {
-				Value
-			}
-			Volume {
-				Value
-			}
-		}
-	}
+    Mixer {
+        Channels {
+            Pan {
+                Value
+            }
+            Volume {
+                Value
+            }
+        }
+    }
 }
 ```
 
@@ -38,16 +38,16 @@ query {
 
 ```graphql
 mutation {
-	Mixer {
-		Channel(Idx: 0) {
-			Volume {
-				Set(Value: 1)
-			}
+    Mixer {
+        Channel(Idx: 0) {
+            Volume {
+                Set(Value: 1)
+            }
             Pan {
                 Set(Value: -1)
             }
-		}
-	}
+        }
+    }
 }
 ```
 
@@ -57,18 +57,18 @@ mutation {
 
 ```graphql
 query {
-	Modules {
-		List {
-			... on Oscillator {
-				Frequency {
-					Value
-				}
-				Volume {
-					Value
-				}
-			}	
-		}
-	}
+    Modules {
+        List {
+            ... on Oscillator {
+                Frequency {
+                    Value
+                }
+                Volume {
+                    Value
+                }
+            }	
+        }
+    }
 }
 ```
 
@@ -76,11 +76,11 @@ query {
 
 ```graphql
 mutation {
-	Modules {
-		Create {
-			Oscillator 
-		}
-	}
+    Modules {
+        Create {
+            Oscillator 
+        }
+    }
 }
 ```
 
@@ -89,13 +89,13 @@ mutation {
 
 ```graphql
 mutation {
-	Mixer {
-		Channel(Idx: 0) {
-			Input {
-				Attach(ModuleIdx: 0, ModuleField: "Sine") 
-			}
-		}
-	}
+    Mixer {
+        Channel(Idx: 0) {
+            Input {
+                Attach(ModuleIdx: 0, ModuleField: "Sine") 
+            }
+        }
+    }
 }
 ```
 
@@ -103,12 +103,12 @@ mutation {
 
 ```graphql
 mutation {
-	Mixer {
-		Channel(Idx: 0) {
-			Input {
-				Detach
-			}
-		}
-	}
+    Mixer {
+        Channel(Idx: 0) {
+            Input {
+                Detach
+            }
+        }
+    }
 }
 ``` 
