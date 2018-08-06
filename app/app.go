@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/dalloriam/graphkit"
-	"github.com/dalloriam/my_synth/app/resolver"
+	"github.com/dalloriam/websynth/app/resolver"
 	"github.com/graph-gophers/graphql-go"
 	"github.com/graph-gophers/graphql-go/relay"
 )

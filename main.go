@@ -1,6 +1,6 @@
 package main
 
-import "github.com/dalloriam/my_synth/app"
+import "github.com/dalloriam/websynth/app"
 
 func main() {
 	app := app.New()
