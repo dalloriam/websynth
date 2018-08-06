@@ -29,7 +29,10 @@ func (a *App) Run() error {
 		return err
 	}
 
-	synth := getSynth()
+	synth, err := getSynth()
+	if err != nil {
+		return err
+	}
 
 	schemaRes, err := graphql.ParseSchema(schema.Raw, resolver.New(synth))
 	if err != nil {

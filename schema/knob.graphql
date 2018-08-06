@@ -1,0 +1,7 @@
+type Knob {
+    Value: Float!
+}
+
+type KnobMutation {
+    Set(Value: Float!): Float!
+}
