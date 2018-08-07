@@ -113,3 +113,19 @@ mutation {
 }
 
 ```
+
+### Modify a module
+
+*Note: This obviously assumes that module 0 is an oscillator.*
+
+```graphql
+mutation {
+    Module(Idx: 0) {
+        ...on OscillatorMutation {
+            Frequency {
+                Set(Value: 200)
+            }
+        }
+    }
+}
+```

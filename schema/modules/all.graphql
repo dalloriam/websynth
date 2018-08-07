@@ -1,1 +1,2 @@
 union Module = Oscillator
+union ModuleMutation = OscillatorMutation

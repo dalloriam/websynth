@@ -16,3 +16,7 @@ func (m *ModuleResolver) ToOscillator() (*OscillatorResolver, bool) {
 	}
 	return nil, false
 }
+
+func (m *ModuleResolver) ToOscillatorMutation() (*OscillatorResolver, bool) {
+	return m.ToOscillator()
+}

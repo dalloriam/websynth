@@ -11,5 +11,7 @@ type Query {
 
 type Mutation {
     Mixer: MixerMutation!
+
+    Module(Idx: Int!): ModuleMutation!
     Modules: ModulesMutation!
 }
