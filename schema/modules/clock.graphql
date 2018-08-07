@@ -1,0 +1,7 @@
+type Clock {
+    Tempo: Knob!
+}
+
+type ClockMutation {
+    Tempo: KnobMutation!
+}

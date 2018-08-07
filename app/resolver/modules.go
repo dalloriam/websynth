@@ -27,8 +27,14 @@ type ModuleCreator struct {
 	sys *audio.System
 }
 
-func (c *ModuleCreator) Oscillator() bool {
+func (c *ModuleCreator) Oscillator() int32 {
 	osc := modular.NewOscillator()
 	c.sys.Modules = append(c.sys.Modules, osc)
-	return true
+	return int32(len(c.sys.Modules) - 1)
+}
+
+func (c *ModuleCreator) Clock() int32 {
+	clock := modular.NewClock()
+	c.sys.Modules = append(c.sys.Modules, clock)
+	return int32(len(c.sys.Modules) - 1)
 }

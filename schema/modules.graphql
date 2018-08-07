@@ -7,5 +7,6 @@ type ModulesMutation {
 }
 
 type CreateModule {
-    Oscillator(): Boolean!
+    Oscillator: Int!
+    Clock: Int!
 }

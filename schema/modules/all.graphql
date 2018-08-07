@@ -1,2 +1,5 @@
-union Module = Oscillator
-union ModuleMutation = OscillatorMutation
+union Module = Oscillator 
+             | Clock
+
+union ModuleMutation = OscillatorMutation 
+                    |  ClockMutation
