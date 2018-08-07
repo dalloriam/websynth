@@ -11,26 +11,22 @@ import (
 	"github.com/graph-gophers/graphql-go/relay"
 )
 
-const (
-	gqlRoute        = "/synth"
-	host            = "0.0.0.0:8080"
-	schemaDirectory = "./schema"
-)
+type App struct {
+	cfg Config
+}
 
-type App struct{}
-
-func New() *App {
-	return &App{}
+func New(cfg Config) *App {
+	return &App{cfg}
 }
 
 func (a *App) Run() error {
-	schema, err := graphkit.LoadSchema(schemaDirectory)
+	schema, err := graphkit.LoadSchema(a.cfg.SchemaDirectory)
 
 	if err != nil {
 		return err
 	}
 
-	audioSys, err := audio.NewSystem()
+	audioSys, err := audio.NewSystem(a.cfg.Audio)
 	if err != nil {
 		return err
 	}
@@ -39,8 +35,8 @@ func (a *App) Run() error {
 	if err != nil {
 		return err
 	}
-	http.Handle(gqlRoute, &relay.Handler{Schema: schemaRes})
+	http.Handle(a.cfg.GQLRoute, &relay.Handler{Schema: schemaRes})
 
-	fmt.Printf("Running on %s\n", host)
-	return http.ListenAndServe(host, nil)
+	fmt.Printf("Running on http://%s%s\n", a.cfg.Host, a.cfg.GQLRoute)
+	return http.ListenAndServe(a.cfg.Host, nil)
 }

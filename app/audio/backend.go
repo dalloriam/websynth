@@ -4,11 +4,15 @@ import (
 	"github.com/gordonklaus/portaudio"
 )
 
-type PortaudioBackend struct {
+const (
+	audioChannelCount = 2 // Stereo.
+)
+
+type portaudioBackend struct {
 	params portaudio.StreamParameters
 }
 
-func NewBackend() (*PortaudioBackend, error) {
+func newBackend(sampleRate, bufferSize, inputDevice, outputDevice int) (*portaudioBackend, error) {
 	// Quick-and-dirty way to initialize portaudio
 	if err := portaudio.Initialize(); err != nil {
 		panic(err)
@@ -18,7 +22,9 @@ func NewBackend() (*PortaudioBackend, error) {
 	if err != nil {
 		return nil, err
 	}
-	inDevice, outDevice := devices[1], devices[2]
+
+	// TODO: Detect devices properly
+	inDevice, outDevice := devices[inputDevice], devices[outputDevice]
 
 	params := portaudio.LowLatencyParameters(inDevice, outDevice)
 
@@ -28,10 +34,10 @@ func NewBackend() (*PortaudioBackend, error) {
 	params.SampleRate = float64(sampleRate)
 	params.FramesPerBuffer = bufferSize
 
-	return &PortaudioBackend{params}, err
+	return &portaudioBackend{params}, err
 }
 
-func (b *PortaudioBackend) Start(callback func(in []float32, out [][]float32)) error {
+func (b *portaudioBackend) Start(callback func(in []float32, out [][]float32)) error {
 	stream, err := portaudio.OpenStream(b.params, callback)
 	if err != nil {
 		return err
@@ -40,6 +46,6 @@ func (b *PortaudioBackend) Start(callback func(in []float32, out [][]float32)) e
 	return stream.Start()
 }
 
-func (b *PortaudioBackend) FrameSize() int {
+func (b *portaudioBackend) FrameSize() int {
 	return b.params.FramesPerBuffer
 }
