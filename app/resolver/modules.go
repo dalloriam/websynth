@@ -38,3 +38,10 @@ func (c *ModuleCreator) Clock() int32 {
 	c.sys.Modules = append(c.sys.Modules, clock)
 	return int32(len(c.sys.Modules) - 1)
 }
+
+func (c *ModuleCreator) Sequencer() int32 {
+	sequencer := modular.NewSequencer([]float64{})
+
+	c.sys.Modules = append(c.sys.Modules, sequencer)
+	return int32(len(c.sys.Modules) - 1)
+}

@@ -31,3 +31,14 @@ func (m *ModuleResolver) ToOscillator() (*OscillatorResolver, bool) {
 func (m *ModuleResolver) ToOscillatorMutation() (*OscillatorResolver, bool) {
 	return m.ToOscillator()
 }
+
+func (m *ModuleResolver) ToSequencer() (*SequencerResolver, bool) {
+	if seq, ok := m.mod.(*modular.Sequencer); ok {
+		return &SequencerResolver{m.sys, seq}, true
+	}
+	return nil, false
+}
+
+func (m *ModuleResolver) ToSequencerMutation() (*SequencerResolver, bool) {
+	return m.ToSequencer()
+}

@@ -1,5 +1,7 @@
 union Module = Oscillator 
              | Clock
+             | Sequencer
 
 union ModuleMutation = OscillatorMutation 
                     |  ClockMutation
+                    | SequencerMutation

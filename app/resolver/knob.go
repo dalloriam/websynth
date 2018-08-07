@@ -18,3 +18,7 @@ func (r *KnobResolver) Set(args struct{ Value float64 }) float64 {
 	r.knob.SetValue(args.Value)
 	return r.Value()
 }
+
+func (r *KnobResolver) Line() *SignalResolver {
+	return &SignalResolver{r.sys, &r.knob.Line}
+}

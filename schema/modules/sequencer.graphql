@@ -1,0 +1,10 @@
+type Sequencer {
+    Sequence: [Float!]!
+    BeatsPerStep: Knob!
+}
+
+type SequencerMutation {
+    SetSequence(Seq: [Float!]): Boolean!
+    BeatsPerStep: KnobMutation!
+    Clock: SignalMutation!
+}

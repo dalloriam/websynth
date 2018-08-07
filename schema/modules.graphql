@@ -9,4 +9,5 @@ type ModulesMutation {
 type CreateModule {
     Oscillator: Int!
     Clock: Int!
+    Sequencer: Int!
 }
