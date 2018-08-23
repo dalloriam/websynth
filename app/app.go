@@ -35,7 +35,7 @@ func (a *App) Run() error {
 	if err != nil {
 		return err
 	}
-	http.Handle(a.cfg.GQLRoute, &relay.Handler{Schema: schemaRes})
+	http.Handle(a.cfg.GQLRoute, &requestHandler{&relay.Handler{Schema: schemaRes}})
 
 	fmt.Printf("Running on http://%s%s\n", a.cfg.Host, a.cfg.GQLRoute)
 	return http.ListenAndServe(a.cfg.Host, nil)

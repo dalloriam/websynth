@@ -2,7 +2,9 @@ import gql from 'graphql-tag';
 import * as React from 'react';
 import { Query } from 'react-apollo';
 
-import MixerChannel from "../../../model/MixerChannel";
+import MixChanMdl from "../../../model/MixerChannel";
+
+import { MixerChannel } from './Channel';
 
 
 export class Channels extends React.Component {
@@ -32,9 +34,9 @@ export class Channels extends React.Component {
                     return <p>Error :( </p>
                 }
 
-                return data.Mixer.Channels.map((c: MixerChannel, i: number) => (
+                return data.Mixer.Channels.map((c: MixChanMdl, i: number) => (
                   <div key={i}>
-                    <p>{`Pan: ${c.Pan.Value}, Volume: ${c.Volume.Value}`}</p>
+                    <MixerChannel channel={c} Idx={i} />
                   </div>
                 ))
             }}
